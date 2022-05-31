@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laravel cheetsheet</title>
+<link rel="stylesheet" href="./css/main.css" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+rel="stylesheet">
+<!-- <script src="all.js"></script> -->
+<!-- ######## swiiper cdn ################### -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<!--=================== font awsome link========================= -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./css/prism.css">
+
+
+</head>
+
+<body>
+<nav>
+<span class="logo">
+<div class="logo_img">
+<img src="./webImages/copy_logo.webp" alt="">
+</div>
+
+
+<div class="content center">
+This is  laravel cheetsheet for you!
+</div>
+
+</span>
+
+</nav>
+<div class="container">
+<ol>
+<li>Defining a route code example
+<pre class="language-php"><code>
+Route::get("about",function(){
+return view('about');
+};
+</code>
+</pre>
+</li>
+
+<li>Defining a route code example with parameter
+<pre class="language-php"><code>
+
+Route::get("about/{idNo}",function($id){
+return  ($id);
+};
+
+</code>
+</pre>
+</li>
+<li>Defining a route code example with parameter and optional
+<pre class="language-php"><code>
+
+Route::get("about/{idNo?}/{name}",function($id=null,$name){
+return  ($id."your name is ".$name);
+}->whereNumber('id')->whereAlpha('name');
+</code>
+</pre>
+</li>
+<li>for view of any web page
+<pre class="language-php"><code>
+Route::view('/about','admin.aboutme');
+</code>
+</pre>
+</li>
+<li>for view of any web page
+<pre class="language-php"><code>
+Route::get('/', function () {
+return view('welcome');
+});
+</code>
+</pre>
+</li>
+<li>Route with controller
+<pre class="language-php"><code>
+Route::get('about',[controllerName::class,'fumnctionName    ']);
+</code>
+</pre>
+</li>
+<li>command to show your webpage
+<pre class="language-php"><code>
+php artisan serve
+</code>
+</pre>
+</li>
+</li>
+<li>Redirect code 
+<pre class="language-php"><code>
+Route::redirect("yaha","waha");
+</code>
+</pre>
+</li>
+<li>Redirect code 
+<pre class="language-php"><code>
+Route::redirect("yaha1","kaha1",201);
+</code>
+</pre>
+</li>
+<li>Redirect code 
+<pre class="language-php"><code>
+Route::permanentRedirect("yaha2","kaha2");
+</code>
+</pre>
+</li>
+<li>fallback message code   
+<pre class="language-php"><code>
+Route::fallback(function(){
+return "defalut value";
+});
+</code>
+</pre>
+</li>
+<li>In order to make controller 
+<pre class="language-php"><code>
+php artisan make:controller controllerName
+</code>
+</pre>
+</li>
+<li>In order to make Component
+<pre class="language-php"><code>
+php artisan make:component componentName
+</code>
+</pre>
+</li>
+<li>Single action controller command
+<pre class="language-php"><code>
+php artisan make:controller controllerName --invokable
+</code>
+</pre>
+</li>
+<li>Single action controller route
+<pre class="language-php"><code>
+route::get('link',[ControllerName::class]);
+</code>
+</pre>
+</li>
+<li>if  example
+<pre class="language-php"><code>
+@if ($name=="sonam")
+{{"hello ".$name}}
+@endif
+</code>
+</pre>
+</li>
+<li>if else example
+<pre class="language-php"><code>
+@if ($name=="sonam")
+{{"hy!  ".$name}}
+@else{{"by sonam"}}
+@endif
+</code>
+</pre>
+</li>
+<li>Unless example
+<pre class="language-php"><code>
+@unless ($name=="sonam")
+
+{{your name is sonam?}}
+@endunless
+</code>
+</pre>
+</li>
+<li>isset example
+<pre class="language-php"><code>
+@isset($name)
+{{your name is sonam}}
+@endisset    
+</code>
+</pre>
+</li>
+<li>empty code example
+<pre class="language-php"><code>
+@empty($name)
+&lt;h3&gt;hello this is empty code&lt;h3&gt;    
+@endempty
+</code>
+</pre>
+</li>
+<li>Production code example
+<pre class="language-php"><code>
+@production($name)
+&lt;h3&gt;hello this is empty code&lt;h3&gt;    
+@endproduction
+</code>
+</pre>
+</li>
+<li>env code example
+<pre class="language-php"><code>
+@env(['staging','local'])
+
+&lt;h3&gt;local and staging environment&lt;h3&gt;    
+@endenv
+</code>
+</pre>
+</li>
+<li>switch statement code example
+<pre class="language-php"><code>
+@switch(1)
+@case(1)
+&lt;h1&gt;THIS IS CASE ONE&lt;/h1&gt;
+@break
+@case(2)
+&lt;h1&gt;THIS IS CASE TWO&lt;/h1&gt;
+@break
+@case(3)
+&lt;h1&gt;THIS IS CASE THREE&lt;/h1&gt;
+@break
+@default
+
+@endswitch
+</code>
+</pre>
+</li>
+<li>for loop statement code example
+<pre class="language-php"><code>
+@for ($i = 0; $i &lt;10; $i++)
+&lt;h1&gt;{{$i}}&lt;/h1&gt; 
+
+@endfor
+</code>
+</pre>
+</li>
+<li>forEach loop statement code example
+<pre class="language-php"><code>
+@foreach ($students as $stu)
+&lt;h1&gt;
+{{$stu}}
+&lt;/h1&gt; 
+@endforeach
+</code>
+</pre>
+</li>
+<li>forelse loop statement code example
+<pre class="language-php"><code>
+@forelse ($students as $stu)
+&lt;h1&gt; 
+{{$stu}}
+&lt;/h1&gt; 
+
+@empty
+&lt;h1&gt;No students&lt;/h1&gt;
+@endforelse
+</code>
+</pre>
+</li>
+<li>While loop example
+<pre class="language-php"><code>
+@while (true)
+&lt;/h1&gt;hello forever&lt;/h1&gt;  
+@endwhile
+</code>
+</pre>
+</li>
+<li>for each loop with break statement example
+<pre class="language-php"><code>
+@foreach ($students as $stu)
+@if ( $loop-&gt;first )
+&lt;h4&gt;this is first lopp&lt;/h4&gt;
+@endif
+@if ($loop-&gt;last)
+&lt;h4&gt;this is last loop&lt;/h4&gt;
+@endif
+&lt;h3&gt;{{$stu}}&lt;/h3&gt;
+@endforeach
+</code>
+</pre>
+</li>
+<li>include example
+<pre class="language-php"><code>
+@include('pagename');
+</code>
+</pre>
+</li>
+<li>includeIf example
+<pre class="language-php"><code>
+@includeIf('pagename');
+</code>
+</pre>
+</li>
+<li>this include a file and also execute array
+<pre class="language-php"><code>
+@each('filename','@arrayName','as thisname');
+</code>
+</pre>
+</li>
+<li>In order to use plain php in laravel file then write 
+<pre class="language-php"><code>
+@php 
+echo "hello world";
+@endphp 
+</code>
+</pre>
+</li>
+<li>In order to call component in Laravel
+<pre class="language-php"><code>
+&lt;x-component &gt;  &lt;x-component/&gt;
+</code>
+</pre>
+</li>
+<li>you must initialize your variable in app/views/component/componentName.php and write your code like that
+<pre class="language-php"><code>
+public $name;
+public $fatherName;
+public $news;
+public $description;
+public function __construct($name,$fatherName,$news,$description)  
+
+{
+$this->name=$name;
+$this->fatherName=$fatherName;
+$this->news=$news;
+$this->description=$description;
+}
+</code>
+</pre>
+</li>
+<li>then your code in resources/views/component/componentName.blade.php
+<pre class="language-php"><code>
+&lt;div&gt;
+
+&lt;h1&gt;my name is {{$name}}  and your father name is {{$fatherName}} and the 
+news is {{$news}} and the 
+
+description is :- {{$description}}
+&lt;/h1&gt;
+&lt;div&gt;
+&lt;h1 {{$attributes-&gt;merge(['class'=&gt;'dclass'])}}&gt;
+hello
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</code>
+</pre>
+</li>
+
+<li>now include your all code in example.blde.php and give value to these variables like that
+<pre class="language-php">
+<code>
+&lt;x-componennt title="Card title" sub-title="card sub title" &gt;  &lt;x-componennt /&gt; 
+</code>
+</pre>
+</li>
+
+
+</ol>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/prism.js"></script>
+</body>
+
+</html>
