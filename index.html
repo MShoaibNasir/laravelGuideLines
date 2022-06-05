@@ -139,7 +139,7 @@ php artisan make:controller controllerName --invokable
 </li>
 <li>This is the command how make laravel file
 <pre class="language-php"><code>
-    composer create-project --prefer-dist laravel/laravel gs23
+composer create-project --prefer-dist laravel/laravel gs23
 </code>
 </pre>
 </li>
@@ -192,11 +192,11 @@ route::get('link',[ControllerName::class]);
 </pre>
 </li>
 <li>Production code example
-    <pre class="language-php"><code>
-        @production($name)
-        @endproduction
-        &lt;h3&gt;hello this is empty code&lt;h3&gt;    
-    </code>
+<pre class="language-php"><code>
+@production($name)
+@endproduction
+&lt;h3&gt;hello this is empty code&lt;h3&gt;    
+</code>
 </pre>
 </li>
 <li>env code example
@@ -358,49 +358,49 @@ hello
 <li>adding css file in your website with laravel framework
 <pre class="language-php">
 <code>
-    &lt;link rel="stylesheet" href="asset{{asset('css/style.css')}}" &gt;
+&lt;link rel="stylesheet" href="asset{{asset('css/style.css')}}" &gt;
 </code>
 </pre>
 </li>
 <li>adding js file in your website with laravel framework
 <pre class="language-php">
 <code>
-    &lt;script src="asset{{asset('js/main.js')}}" script /&gt;
+&lt;script src="asset{{asset('js/main.js')}}" script /&gt;
 </code>
 </pre>
 </li>
 <li>in order to install node module file then write command in terminal
 <pre class="language-php">
 <code>
-    npm install
+npm install
 </code>
 </pre>
 </li>
 <li>To Compiled files we have two commands
-    dev="non-minified"
-    prod="minified"
-    watch="auto compiled also show result"
+dev="non-minified"
+prod="minified"
+watch="auto compiled also show result"
 <pre class="language-php">
 <code>
-    npm run dev 
-    npm run prod
-    npm run watch
+npm run dev 
+npm run prod
+npm run watch
 </code>
 </pre>
 </li>
 <li>
-    route call in your nav  tag like that
+route call in your nav  tag like that
 <pre class="language-php">
 <code>
-    &lt;a href="{{route('home')}}">&lt;/a&gt;
+&lt;a href="{{route('home')}}">&lt;/a&gt;
 </code>
 </pre>
 </li>
 <li>
-    making middle wear through command
+making middle wear through command
 <pre class="language-php">
 <code>
-    php artisan make:middleware middlewareName
+php artisan make:middleware middlewareName
 </code>
 </pre>
 </li>
@@ -408,7 +408,7 @@ hello
 protect from some attacks put in form
 <pre class="language-php">
 <code>
-    @csrf
+@csrf
 </code>
 </pre>
 </li>
@@ -416,7 +416,7 @@ protect from some attacks put in form
 this is the function through get all info about form data in array form
 <pre class="language-php">
 <code>
-    $request->all();
+$request->all();
 </code>
 </pre>
 </li>
@@ -424,7 +424,7 @@ this is the function through get all info about form data in array form
 this is the function through get info in input field about form data in array form
 <pre class="language-php">
 <code>
-    $request->input();
+$request->input();
 </code>
 </pre>
 </li>
@@ -432,7 +432,7 @@ this is the function through get info in input field about form data in array fo
 this is the function through get info in input field of name about form data in array form
 <pre class="language-php">
 <code>
-    $req->input('name');
+$req->input('name');
 </code>
 </pre>
 </li>
@@ -440,7 +440,7 @@ this is the function through get info in input field of name about form data in 
 you can also get data into any field through this function
 <pre class="language-php">
 <code>
-    $req->name;
+$req->name;
 </code>
 </pre>
 </li>
@@ -448,9 +448,9 @@ you can also get data into any field through this function
 this is function of php its only check that one of them is present in form or not
 <pre class="language-php">
 <code>
-    $req->hasAny(['name','email']);
-    echo $req->name;
-    echo $req->email;
+$req->hasAny(['name','email']);
+echo $req->name;
+echo $req->email;
 
 </code>
 </pre>
@@ -459,9 +459,9 @@ this is function of php its only check that one of them is present in form or no
 this is function of php its only check that the following field filled or not
 <pre class="language-php">
 <code>
-    $req->Filled(['name','email']);
-    echo $req->name;
-    echo $req->email;
+$req->Filled(['name','email']);
+echo $req->name;
+echo $req->email;
 
 </code>
 </pre>
@@ -470,22 +470,22 @@ this is function of php its only check that the following field filled or not
 this is the example through you can retrive data from an form 
 <pre class="language-php">
 <code>
-    function Signup(Request $req){
-        if($req->has(['name','email'])){
-            echo $req->name;
-            echo $req->email;
-        }
-        return view('Form');
-    }
+function Signup(Request $req){
+if($req->has(['name','email'])){
+echo $req->name;
+echo $req->email;
+}
+return view('Form');
+}
 }
 </code>
 </pre>
 </li>
 <li>
-    missing method
+missing method
 <pre class="language-php">
 <code>
-    $req->missing('name');
+$req->missing('name');
 </code>
 </pre>
 </li>
@@ -493,10 +493,10 @@ this is the example through you can retrive data from an form
 when data is present in input field then this code execute
 <pre class="language-php">
 <code>
-    function Signup(Request $req){
-        $req->whenFilled('name',function(){
+function Signup(Request $req){
+$req->whenFilled('name',function(){
 echo "Data Modified";
-        });
+});
 </code>
 </pre>
 </li>
@@ -504,7 +504,7 @@ echo "Data Modified";
 this also retrive data
 <pre class="language-php">
 <code>
-    $req->flashOnly(['name']);
+$req->flashOnly(['name']);
 </code>
 </pre>
 </li>
@@ -512,7 +512,7 @@ this also retrive data
 this code used for mysql 
 <pre class="language-php">
 <code>
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 </code>
 </pre>
 </li>
@@ -520,8 +520,8 @@ this code used for mysql
 this code select all data from your mysql 
 <pre class="language-php">
 <code>
-    $student=DB::select('select * from student');
-    dd($student);
+$student=DB::select('select * from student');
+dd($student);
 </code>
 </pre>
 </li>
@@ -529,7 +529,7 @@ this code select all data from your mysql
 this is the way you can retrive data 
 <pre class="language-php">
 <code>
-    $student=DB::select('select * from student where city=?',['karachi']);
+$student=DB::select('select * from student where city=?',['karachi']);
 </code>
 </pre>
 </li>
@@ -537,8 +537,8 @@ this is the way you can retrive data
 this is the way you can insert data 
 <pre class="language-php">
 <code>
-    DB::insert('insert into student(name,email,city) values(?,?,?)',['talha','talha@gmail.com','karachi']);
-       $student=DB::select('select * from student');
+DB::insert('insert into student(name,email,city) values(?,?,?)',['talha','talha@gmail.com','karachi']);
+$student=DB::select('select * from student');
 </code>
 </pre>
 </li>
@@ -546,8 +546,8 @@ this is the way you can insert data
 this is the way you can update data 
 <pre class="language-php">
 <code>
-    DB::update('update student set city=? where id=?',["rawalpindi","4"]);
-    $student=DB::select('select * from student');
+DB::update('update student set city=? where id=?',["rawalpindi","4"]);
+$student=DB::select('select * from student');
 </code>
 </pre>
 </li>
@@ -555,7 +555,7 @@ this is the way you can update data
 this is the way you can delet data 
 <pre class="language-php">
 <code>
-    DB::delete('delete from student   where id=?',["1"]);
+DB::delete('delete from student   where id=?',["1"]);
 </code>
 </pre>
 </li>
@@ -563,63 +563,63 @@ this is the way you can delet data
 through this code you can change or update you data in laravel
 <pre class="language-php">
 <code>
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\DB;
-    
-    class studentController extends Controller
-    {
-       public function show(){    
-           $student=DB::select('select * from student');
-           DB::transaction(function()
-    {   
-        DB::update('update student set name=? where id=?',["hashir","9"]);
-        DB::delete('delete from student   where id=?',["10"]);
-    });
-           
-    return view ('student',['student'=>$student]); 
-        }
-    }
-    
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class studentController extends Controller
+{
+public function show(){    
+$student=DB::select('select * from student');
+DB::transaction(function()
+{   
+DB::update('update student set name=? where id=?',["hashir","9"]);
+DB::delete('delete from student   where id=?',["10"]);
+});
+
+return view ('student',['student'=>$student]); 
+}
+}
+
 </code>
 </pre>
 </li>
 <li>
-    to retrive data form data base table
+to retrive data form data base table
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->get();
-        return view('student',['students'=>$students]);
-    
+$students=DB::table('student')->get();
+return view('student',['students'=>$students]);
+
 </code>
 </pre>
 </li>
 <li>
-    to retrive first row data form data base table
+to retrive first row data form data base table
 <pre class="language-php">
 <code>
-    $students=DB::table('student','city','karachi')->first();
-        return view('student',['students'=>$students]);
-    
+$students=DB::table('student','city','karachi')->first();
+return view('student',['students'=>$students]);
+
 </code>
 </pre>
 </li>
 <li>
-    to find the particular name from database table 
+to find the particular name from database table 
 <pre class="language-php">
 <code>
-    $students=DB::table('student','city','karachi')->value("name");
-    
+$students=DB::table('student','city','karachi')->value("name");
+
 </code>
 </pre>
 </li>
 <li>
-    to find the particular data from database table  acoording to id number
+to find the particular data from database table  acoording to id number
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->find('5');
-    
+$students=DB::table('student')->find('5');
+
 </code>
 </pre>
 </li>
@@ -627,9 +627,9 @@ through this code you can change or update you data in laravel
 if you find the column of list then 
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->pluck('Name');
-    $students=DB::table('student')->pluck('marks','Name');(another method)
-    
+$students=DB::table('student')->pluck('Name');
+$students=DB::table('student')->pluck('marks','Name');(another method)
+
 </code>
 </pre>
 </li>
@@ -637,25 +637,25 @@ if you find the column of list then
 chunking of data example:-
 <pre class="language-php">
 <code>
-    {
-        function show(){
-        
-        DB::table('student')->orderBy('id')->chunk(2,function($students){
-            echo "chunk of data <br>";
-            foreach($students as $stu){
-                echo $stu->Name;
-                echo "<br>";
-            }
-            
-        });
+{
+function show(){
 
-    
-            
-        }
-        
-    }
-    
-    
+DB::table('student')->orderBy('id')->chunk(2,function($students){
+echo "chunk of data <br>";
+foreach($students as $stu){
+echo $stu->Name;
+echo "<br>";
+}
+
+});
+
+
+
+}
+
+}
+
+
 </code>
 </pre>
 </li>
@@ -663,7 +663,7 @@ chunking of data example:-
 in order to find the number of rows in database table
 <pre class="language-php">
 <code>
-    $student=DB::table('student')->count();
+$student=DB::table('student')->count();
 </code>
 </pre>
 </li>
@@ -671,7 +671,7 @@ in order to find the number of rows in database table
 in order to find the max value in any column
 <pre class="language-php">
 <code>
-    $student=DB::table('student')->max('marks');
+$student=DB::table('student')->max('marks');
 </code>
 </pre>
 </li>
@@ -679,9 +679,9 @@ in order to find the max value in any column
 checking id present or not
 <pre class="language-php">
 <code>
-    if(DB::table('student')->where('id','10')->exists()){
-        dd("yes");
-    }
+if(DB::table('student')->where('id','10')->exists()){
+dd("yes");
+}
 </code>
 </pre>
 </li>
@@ -689,9 +689,9 @@ checking id present or not
 checking id present or not
 <pre class="language-php">
 <code>
-    if(DB::table('student')->where('id','10')->doesntExist()){
-        dd("yes");
-    }
+if(DB::table('student')->where('id','10')->doesntExist()){
+dd("yes");
+}
 </code>
 </pre>
 </li>
@@ -699,8 +699,8 @@ checking id present or not
 in order to select particular data
 <pre class="language-php">
 <code>
-    $student=DB::table('student')->select('Name','Email')->get();
-    dd($student);
+$student=DB::table('student')->select('Name','Email')->get();
+dd($student);
 </code>
 </pre>
 </li>
@@ -708,8 +708,8 @@ in order to select particular data
 this is where function through you can get data
 <pre class="language-php">
 <code>
-    $student=DB::table('student')->where('id',1)->get();
-    // $student=DB::table('student')->where('id',">",1)->get();
+$student=DB::table('student')->where('id',1)->get();
+// $student=DB::table('student')->where('id',">",1)->get();
 </code>
 </pre>
 </li>
@@ -717,8 +717,8 @@ this is where function through you can get data
 Example of where orWhere to retruve data from database
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->where("name","like","t%")->orWhere("id",1)->get();
-    dd($students);
+$students=DB::table('student')->where("name","like","t%")->orWhere("id",1)->get();
+dd($students);
 </code>
 </pre>
 </li>
@@ -726,8 +726,8 @@ Example of where orWhere to retruve data from database
 Example of whereBetween to retruve data from database
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->whereBetween('marks',[10,100])->get();
-    dd($students);
+$students=DB::table('student')->whereBetween('marks',[10,100])->get();
+dd($students);
 </code>
 </pre>
 </li>
@@ -735,9 +735,9 @@ Example of whereBetween to retruve data from database
 In order to retrive data from database with date method 
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->whereDate('date','2022-06-16')->get();
+$students = DB::table('student')->whereDate('date','2022-06-16')->get();
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 </li>
@@ -745,7 +745,7 @@ In order to retrive data from database with date method
 In order to retrive data from database with orderBy function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->orderBy('name')->get();
+$students = DB::table('student')->orderBy('name')->get();
 </code>
 </pre>
 </li>
@@ -753,7 +753,7 @@ In order to retrive data from database with orderBy function
 In order to retrive data from database with latest function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->latest('date')->first()
+$students = DB::table('student')->latest('date')->first()
 </code>
 </pre>
 </li>
@@ -761,7 +761,7 @@ In order to retrive data from database with latest function
 In order to retrive data from database with oldest function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->oldest('date')->first()
+$students = DB::table('student')->oldest('date')->first()
 </code>
 </pre>
 </li>
@@ -769,18 +769,18 @@ In order to retrive data from database with oldest function
 In order to retrive data from database with random order function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->inRandomOrder()->get();
+$students = DB::table('student')->inRandomOrder()->get();
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 <li>
 In order to retrive data from database with groupBy function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->groupBy("marks")->having("marks",">",50)->get();
+$students = DB::table('student')->groupBy("marks")->having("marks",">",50)->get();
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 </li>
@@ -788,11 +788,11 @@ In order to retrive data from database with groupBy function
 In order to retrive data from database with take function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->skip(3)->take(2)->get();
+$students = DB::table('student')->skip(3)->take(2)->get();
 
-    dd($students);
+dd($students);
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 </li>
@@ -800,11 +800,11 @@ In order to retrive data from database with take function
 In order to retrive data from database with limit function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->limit(2)->get();
+$students = DB::table('student')->limit(2)->get();
 
-    dd($students);
+dd($students);
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 </li>
@@ -812,11 +812,11 @@ In order to retrive data from database with limit function
 In order to retrive data from database with offset and limit function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->offset(4)->limit(2)->get();
+$students = DB::table('student')->offset(4)->limit(2)->get();
 
-    dd($students);
+dd($students);
 
-        dd($students);
+dd($students);
 </code>
 </pre>
 </li>
@@ -824,26 +824,26 @@ In order to retrive data from database with offset and limit function
 In order to insert multiple data in table 
 <pre class="language-php">
 <code>
-    $students=DB::table('student')->insert(
-        [
-            [
-                "Name"=>"harami",
-                "Email"=>"harami@gmail.com",
-                "city"=>"karachi",
-                "marks"=>"90",
-                "date"=>"2022-04-02"
-            ],[
-    
-                "Name"=>"Nalaik",
-                "Email"=>"Nalaik@gmail.com",
-                "city"=>"lahore",
-                "marks"=>"10",
-                "date"=>"2022-10-02"
-            ]
-        ]
-    );
+$students=DB::table('student')->insert(
+[
+[
+"Name"=>"harami",
+"Email"=>"harami@gmail.com",
+"city"=>"karachi",
+"marks"=>"90",
+"date"=>"2022-04-02"
+],[
 
-    dd($students);
+"Name"=>"Nalaik",
+"Email"=>"Nalaik@gmail.com",
+"city"=>"lahore",
+"marks"=>"10",
+"date"=>"2022-10-02"
+]
+]
+);
+
+dd($students);
 </code>
 </pre>
 </li>
@@ -851,11 +851,368 @@ In order to insert multiple data in table
 In order to retrive data from database with offset and limit function
 <pre class="language-php">
 <code>
-    $students = DB::table('student')->offset(4)->limit(2)->get();
+$students = DB::table('student')->offset(4)->limit(2)->get();
 
-    dd($students);
+dd($students);
 
-        dd($students);
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+In order to insert data with insertOrIgnore method
+
+
+<pre class="language-php">
+<code>
+DB::table('student')->insertOrIgnore([
+"id"=>1,
+"Name"=>'Tom',
+"Email"=>'yahya@gmail.com',
+"id"=>1,
+"id"=>1,
+]);
+
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+In order to insert data with insertOrIgnore method
+
+
+<pre class="language-php">
+<code>
+DB::table('student')->insertOrIgnore([
+"id"=>1,
+"Name"=>'Tom',
+"Email"=>'yahya@gmail.com',
+"id"=>1,
+"id"=>1,
+]);
+
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+Insert data and get date througn this method
+
+
+<pre class="language-php">
+<code>
+$students=DB::table('student')->insertGetId([
+"Name"=>"tommy",
+"Email"=>"tommy@gmail.com",
+"city"=>"tokyo",
+"marks"=>80,
+"date"=>"2022-08-01"
+
+]);
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+Update data through this method:-
+
+
+<pre class="language-php">
+<code>
+
+$students=DB::table('student')->where("id","1")->update([
+"Name"=>"tommy",
+"Email"=>"tommy@gmail.com",
+"city"=>"tokyo",
+"marks"=>80,
+"date"=>"2022-08-01"
+
+]);
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+UpdateOrInsert function :-
+
+
+<pre class="language-php">
+<code>
+DB::table('student')->updateOrInsert(
+['name' => 'tommy'],
+['email' => 'johnylever@gmail.com',"city"=>"tokyo"]
+);
+</code>
+</pre>
+</li>
+<li>
+to delet row from table
+
+
+<pre class="language-php">
+<code>
+DB::table('student')->where("id",2)->delete();
+</code>
+</pre>
+</li>
+<li>
+to delete all data from table
+
+
+<pre class="language-php">
+<code>
+DB::table('student')->truncate();
+</code>
+</pre>
+</li>
+<li>
+pagination function
+
+
+<pre class="language-php">
+<code>
+$student=DB::table('student')->paginate(1);
+and put this finction in main file
+{{$students->links()}}
+</code>
+</pre>
+</li>
+<li>
+Simple pagination function
+
+
+<pre class="language-php">
+<code>
+$student=DB::table('student')->simplePaginate(1);
+and put this finction in main file
+{{$students->links()}}
+</code>
+</pre>
+</li>
+<li>
+Simple pagination function using bootstrap
+
+
+<pre class="language-php">
+<code>
+use Illuminate\Pagination\paginator; (write this code into App/Provider/AppServicePrpvider)
+paginator::useBootstrap();(write this code in boot function or in the same path App/Provider/AppServicePrpvider)
+
+</code>
+</pre>
+</li>
+<li>
+This is the command through which you called all the files of pagonation:-
+
+
+<pre class="language-php">
+<code>
+php artisan vendor:publish --tag=laravel-pagination
+</code>
+</pre>
+</li>
+<li>
+this is the second method of pagination:-
+
+
+<pre class="language-php">
+<code>    {{$students->links('pagination::bootstrap-4')}}
+</code>
+</pre>
+</li>
+<li>
+through this command you can make migration file
+<pre class="language-php">
+<code>     
+php artisan make:migration create_student_table
+</code>
+</pre>
+</li>
+<li>
+to execute migrate tables file
+<pre class="language-php">
+<code>     
+php artisan migrate
+</code>
+</pre>
+</li>
+<li>
+To see the status of migration files
+<pre class="language-php">
+<code>     
+php artisan migrate:status
+</code>
+</pre>
+</li>
+<li>
+To rollback the last migration
+<pre class="language-php">
+<code>     
+php artisan migrate:rollback
+</code>
+</pre>
+</li>
+<li>
+To rollback the last migration with step
+<pre class="language-php">
+<code>     
+php artisan migrate:rollback --step=1
+
+</code>
+</pre>
+</li>
+<li>
+To rollback all the migration
+<pre class="language-php">
+<code>     
+php artisan migrate:reset
+
+</code>
+</pre>
+</li>
+<li>
+rollback and refresh commmands
+<pre class="language-php">
+<code>     
+php artisan migrate:refresh 
+
+</code>
+</pre>
+</li>
+<li>
+rollback and refresh commmands
+<pre class="language-php">
+<code>     
+php artisan migrate:refresh --step=2
+
+</code>
+</pre>
+</li>
+<li>
+delet and migrate all files
+<pre class="language-php">
+<code>     
+php artisan migrate:fresh
+
+</code>
+</pre>
+</li>
+<li>
+hasTable function
+<pre class="language-php">
+<code>     
+hasTable('tableName');
+
+</code>
+</pre>
+</li>
+<li>
+schema rename function
+<pre class="language-php">
+<code>     
+Schema::rename('student','teacher');
+
+</code>
+</pre>
+</li>
+<li>
+add column to other table by this code(migration)
+<pre class="language-php">
+<code>     
+php artisan make:migration add_column_to_mobile --table=mobile
+
+</code>
+</pre>
+</li>
+<li>
+In migartion topic you can add column into your table by this code
+<pre class="language-php">
+<code>     
+$table->string('memory');
+
+</code>
+</pre>
+</li>
+<li>
+In migartion topic you can drop column into your table by this code
+<pre class="language-php">
+<code>     
+$table->dropColumn('memory');
+
+</code>
+</pre>
+</li>
+<li>
+In migartion topic you can drop multiple column into your table by this code
+<pre class="language-php">
+<code>     
+    $table->dropColumn(['memory','price']);
+
+</code>
+</pre>
+</li>
+<li>
+this is the method through you can can set defalt value of any column(migration)
+<pre class="language-php">
+<code>     
+    $table->string('brand_name')->default('Nokia');
+
+</code>
+</pre>
+</li>
+<li>
+this is the method through you can can set length value of any column(migration)
+<pre class="language-php">
+<code>     
+    $table->string('model_name',255)->change();
+
+</code>
+</pre>
+</li>
+<li>
+through this method you can change the name of column name (migration)
+<pre class="language-php">
+<code>     
+    $table->renameColumn('model_name','name');
+
+</code>
+</pre>
+</li>
+<li>
+through this method you can add index in column(migration)
+<pre class="language-php">
+<code>     
+    $table->string('email')->unique();
+
+</code>
+</pre>
+</li>
+<li>
+through this method you can remove index in column(migration)
+<pre class="language-php">
+<code>     
+    $table->dropUnique(['indexno']);
+
+</code>
+</pre>
+</li>
+<li>
+to make foreign key
+<pre class="language-php">
+<code>     
+    $table->foreign('idWithStudent')->references('id')->on('student');
+
+</code>
+</pre>
+</li>
+<li>
+through this commnad you can make resources controller  
+<pre class="language-php">
+<code>     
+    
+php artisan make:controller studentController -r 
+
+
 </code>
 </pre>
 </li>
