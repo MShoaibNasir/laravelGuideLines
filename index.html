@@ -46,6 +46,24 @@ return view('about');
 </code>
 </pre>
 </li>
+<li>function of php which convert string to array
+<pre class="language-php"><code>
+compact('this is string');
+</code>
+</pre>
+</li>
+<li>you can take the data from web.php into main file like home.blade.php
+<pre class="language-php"><code>
+Route::get('home/{name?}/{id}',function($id,$name=null){
+$data=compact('id','name');
+return view('home')->with($data);
+})
+and now the data is calling into main home file with blade syntex
+{{$id}}
+{{$name}}
+</code>
+</pre>
+</li>
 
 <li>Defining a route code example with parameter
 <pre class="language-php"><code>
@@ -1146,7 +1164,7 @@ $table->dropColumn('memory');
 In migartion topic you can drop multiple column into your table by this code
 <pre class="language-php">
 <code>     
-    $table->dropColumn(['memory','price']);
+$table->dropColumn(['memory','price']);
 
 </code>
 </pre>
@@ -1155,7 +1173,7 @@ In migartion topic you can drop multiple column into your table by this code
 this is the method through you can can set defalt value of any column(migration)
 <pre class="language-php">
 <code>     
-    $table->string('brand_name')->default('Nokia');
+$table->string('brand_name')->default('Nokia');
 
 </code>
 </pre>
@@ -1164,7 +1182,7 @@ this is the method through you can can set defalt value of any column(migration)
 this is the method through you can can set length value of any column(migration)
 <pre class="language-php">
 <code>     
-    $table->string('model_name',255)->change();
+$table->string('model_name',255)->change();
 
 </code>
 </pre>
@@ -1173,7 +1191,7 @@ this is the method through you can can set length value of any column(migration)
 through this method you can change the name of column name (migration)
 <pre class="language-php">
 <code>     
-    $table->renameColumn('model_name','name');
+$table->renameColumn('model_name','name');
 
 </code>
 </pre>
@@ -1182,7 +1200,7 @@ through this method you can change the name of column name (migration)
 through this method you can add index in column(migration)
 <pre class="language-php">
 <code>     
-    $table->string('email')->unique();
+$table->string('email')->unique();
 
 </code>
 </pre>
@@ -1191,7 +1209,7 @@ through this method you can add index in column(migration)
 through this method you can remove index in column(migration)
 <pre class="language-php">
 <code>     
-    $table->dropUnique(['indexno']);
+$table->dropUnique(['indexno']);
 
 </code>
 </pre>
@@ -1200,7 +1218,7 @@ through this method you can remove index in column(migration)
 to make foreign key
 <pre class="language-php">
 <code>     
-    $table->foreign('idWithStudent')->references('id')->on('student');
+$table->foreign('idWithStudent')->references('id')->on('student');
 
 </code>
 </pre>
@@ -1209,10 +1227,231 @@ to make foreign key
 through this commnad you can make resources controller  
 <pre class="language-php">
 <code>     
-    
+
 php artisan make:controller studentController -r 
 
 
+</code>
+</pre>
+</li>
+<li>
+through this commnad you can show all the routes of the resource controller
+<pre class="language-php">
+<code>     
+php artisan route:list
+</code>
+</pre>
+</li>
+<li>
+through this commnad you can make seeder
+<pre class="language-php">
+<code>     
+
+php artisan make:seeder studentseeder
+
+
+</code>
+</pre>
+</li>
+<li>
+through this code into deeder file
+<pre class="language-php">
+<code>     
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\str;
+
+
+</code>
+</pre>
+</li>
+<li>
+throught this commnad you can make model
+<pre class="language-php">
+<code>     
+php artisan make:model modelName
+</code>
+</pre>
+</li>
+<li>
+throught this commnad you can make model and migration at the same time
+<pre class="language-php">
+<code>     
+php artisan make:model modelName -m
+</code>
+</pre>
+</li>
+<li>
+throught this commnad you can make model and migration and controller at the same time
+<pre class="language-php">
+<code>     
+php artisan make:model modelName -mc
+</code>
+</pre>
+</li>
+<li>
+you maybe written this code in model file(model)
+<pre class="language-php">
+<code>     
+protected $table='students';
+</code>
+</pre>
+</li>
+<li>
+these are the properties which are used in model file
+<pre class="language-php">
+<code>     
+protected $connection='mysql';   
+protected $table='student';
+protected $primaryKey='id';
+protected $keyType='string';
+protected $incrementing='false';
+protected $timestamps='false';
+protected $fillable=["name","email","city","marks"];
+
+const CREATED_AT="creation_date";
+const UPDATE_AT='updation_date';
+
+
+</code>
+</pre>
+</li>
+<li>
+retrive data like that
+<pre class="language-php">
+<code>     
+student::where('city','karachi')->orderBy('name')->get();
+</code>
+</pre>
+</li>
+<li>
+you may also use chunking method to retrive data
+<pre class="language-php">
+<code>     
+student::chunk(1,function($students){
+echo "chucking the data <br>";
+foreach ($students as  $stu) {
+echo  $stu->name;
+echo "<br>";
+}
+});
+</code>
+</pre>
+</li>
+<li>
+find function with retriveing data with model
+<pre class="language-php">
+<code>     
+$students=student::find(1);
+</code>
+</pre>
+</li>
+<li>
+firstwhere  function with retriveing data with model
+<pre class="language-php">
+<code>     
+$students=student::firstWhere('city','karachi');
+</code>
+</pre>
+</li>
+<li>
+firstor  function with retriveing data with model
+<pre class="language-php">
+<code>     
+$students=student::where('marks','=','99')->firstOr(function(){
+echo "first not found or execution started";
+});
+</code>
+</pre>
+</li>
+<li>
+you may create and retrive data from model like that
+<pre class="language-php">
+<code>     
+function show(){
+// $students= student::all();
+// $students=student::where('city','karachi')->orderBy('name')->get();
+
+$students=student::firstOrCreate(
+["name"=>"dell"],["email"=>"dell@gmail.com","city"=>"ranchi","marks"=>"900"]
+
+);
+</code>
+</pre>
+</li>
+<li>
+you may new and retrive data from model like that
+<pre class="language-php">
+<code>     
+$students=student::firstOrNew(
+["name"=>"hp"],["email"=>"hp@gmail.com","city"=>"ranchi","marks"=>"900"]
+
+);
+$students->save();
+</code>
+</pre>
+</li>
+<li>
+Abbreviation function
+<pre class="language-php">
+<code>     
+$students=student::where('city','karachi')->count();
+$students=student::where('city','karachi')->max("marks");
+$students=student::where('city','karachi')->min("marks");
+</code>
+</pre>
+</li>
+
+<li>
+you can insert data into database like that
+<pre class="language-php">
+<code>     
+$student=student::create([
+"name"=>"tom",
+"email"=>"tom@gmail.com",
+"city"=>"ranchi",
+"marks"=>87
+
+]);
+</code>
+</pre>
+</li>
+<li>
+through this method you can update data
+<pre class="language-php">
+<code>     
+$student=student::find(6);
+$student->name="lenovo";
+$student->email="lenovo@gmail.com";
+$student->city="karachi";
+$student->marks=100;
+$student->save();
+
+</code>
+</pre>
+</li>
+<li>
+through this method you can updateOrCreate function data
+<pre class="language-php">
+<code>     
+student::updateOrCreate(["name"=>"dell"],[
+"email"=>"dali@gmail.com",
+"city"=>"turkiya",
+"marks"=>1002
+]);
+</code>
+</pre>
+</li>
+<li>
+delet the data from database like that with model file
+<pre class="language-php">
+<code>     
+student::find(4)->delete();
+student::where('city','karachi')->delete();
+student::destroy(4);
+student::truncate();
 </code>
 </pre>
 </li>
