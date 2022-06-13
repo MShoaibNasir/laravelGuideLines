@@ -125,6 +125,12 @@ Route::redirect("yaha1","kaha1",201);
 </li>
 <li>Redirect code 
 <pre class="language-php"><code>
+return redirect (route('index'));
+</code>
+</pre>
+</li>
+<li>Redirect code 
+<pre class="language-php"><code>
 Route::permanentRedirect("yaha2","kaha2");
 </code>
 </pre>
@@ -628,6 +634,7 @@ to find the particular name from database table
 <pre class="language-php">
 <code>
 $students=DB::table('student','city','karachi')->value("name");
+$students=DB::table('student')where('city','katrachi')->value("name");
 
 </code>
 </pre>
@@ -704,6 +711,14 @@ dd("yes");
 </pre>
 </li>
 <li>
+get the data through 
+<pre class="language-php">
+<code>
+DB::table('students')->where("city","karachi")->value("name");
+</code>
+</pre>
+</li>
+<li>
 checking id present or not
 <pre class="language-php">
 <code>
@@ -760,10 +775,42 @@ dd($students);
 </pre>
 </li>
 <li>
+In order to retrive data from database with year method 
+<pre class="language-php">
+<code>
+$students = DB::table('student')->whereYear('date','2022')->get();
+
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+In order to retrive data from database with Month method 
+<pre class="language-php">
+<code>
+$students = DB::table('student')->whereMonth('pass_date','03')->get();
+
+dd($students);
+</code>
+</pre>
+</li>
+<li>
+In order to retrive data from database with Day method 
+<pre class="language-php">
+<code>
+$students = DB::table('student')->whereDay('pass_date','03')->get();
+
+dd($students);
+</code>
+</pre>
+</li>
+<li>
 In order to retrive data from database with orderBy function
 <pre class="language-php">
 <code>
-$students = DB::table('student')->orderBy('name')->get();
+$students = DB::table('student')->orderBy('name','desc')->get();
+'asc','desc'(these are the second argumets of function)
+
 </code>
 </pre>
 </li>
@@ -839,14 +886,22 @@ dd($students);
 </pre>
 </li>
 <li>
+IN LAARVEL YOU MAY ACTIVATE YOUR CODE WITH THIS SYNTEX
+<pre class="language-php">
+<code>
+{{url('/edit',$stu->id)}}
+</code>
+</pre>
+</li>
+<li>
 In order to insert multiple data in table 
 <pre class="language-php">
 <code>
 $students=DB::table('student')->insert(
 [
 [
-"Name"=>"harami",
-"Email"=>"harami@gmail.com",
+"Name"=>"shoaib",
+"Email"=>"shoaib@gmail.com",
 "city"=>"karachi",
 "marks"=>"90",
 "date"=>"2022-04-02"
@@ -862,6 +917,18 @@ $students=DB::table('student')->insert(
 );
 
 dd($students);
+</code>
+</pre>
+</li>
+<li>
+when you are making form then you insert data like that
+<pre class="language-php">
+<code>     
+function index(request $request){
+"name"=>$request->name,
+"email"=>$request->email,
+"number"=>$request->number,
+}
 </code>
 </pre>
 </li>
@@ -901,6 +968,18 @@ In order to insert data with insertOrIgnore method
 
 <pre class="language-php">
 <code>
+$id = DB::table('users')->insertGetId(
+['email' => 'john@example.com','name' => 'john']
+);
+</code>
+</pre>
+</li>
+<li>
+In order to insert data with insertOrIgnore method
+
+
+<pre class="language-php">
+<code>
 DB::table('student')->insertOrIgnore([
 "id"=>1,
 "Name"=>'Tom',
@@ -914,7 +993,7 @@ dd($students);
 </pre>
 </li>
 <li>
-Insert data and get date througn this method
+insertGetId method help you to fund id from data 
 
 
 <pre class="language-php">
@@ -1132,12 +1211,13 @@ Schema::rename('student','teacher');
 
 </code>
 </pre>
-</li>
+</li>   
 <li>
 add column to other table by this code(migration)
 <pre class="language-php">
 <code>     
 php artisan make:migration add_column_to_mobile --table=mobile
+php artisan make:migration add_column_to_mobile_table
 
 </code>
 </pre>
@@ -1235,6 +1315,36 @@ php artisan make:controller studentController -r
 </pre>
 </li>
 <li>
+through this commnad you can make rule
+<pre class="language-php">
+<code>     
+
+php artisan make:rule rulename
+
+
+</code>
+</pre>
+</li>
+<li>
+this command help you to change the column length etc
+<pre class="language-php">
+<code>     
+composer require doctrine/dbal
+</code>
+</pre>
+</li>
+<li>
+through this commnad you can make 
+<pre class="language-php">
+<code>     
+
+php artisan make:rule rulename
+
+
+</code>
+</pre>
+</li>
+<li>
 through this commnad you can show all the routes of the resource controller
 <pre class="language-php">
 <code>     
@@ -1254,16 +1364,88 @@ php artisan make:seeder studentseeder
 </pre>
 </li>
 <li>
-through this code into deeder file
+put this code into seeder file on the top
 <pre class="language-php">
 <code>     
 
-use Illuminate\Database\Seeder;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\str;
+
+</code>
+</pre>
+</li>
+<li>
+if you want to insert data random so
+<pre class="language-php">
+<code>     
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\str;
 
 
+DB::table('student')->insert([
+"Name"=>str::random(10),
+"Email"=>str::random(10)."@gmail.com",
+"Address"=>str::random(10),
+
+]);
+
+</code>
+</pre>
+</li>
+<li>
+this is the code through you can change password into hash password
+<pre class="language-php">
+<code>     
+Hash::make('talha123');
+</code>
+</pre>
+</li>
+<li>
+for password hash you can write code like that
+<pre class="language-php">
+<code>     
+"password"=>Hash::make('hashir11');
+
+</code>
+</pre>
+</li>
+<li>
+
+<pre class="language-php">
+<code>     
+
+
+php artisan db:seed --class=seederFileName
+
+
+</code>
+</pre>
+</li>
+<li>
+seeding all the files   
+
+<pre class="language-php">
+<code>     
+
+
+php artisan db:seed
+
+
+</code>
+</pre>
+</li>
+<li>
+for seeding you can write this code in databaseSeeder.php      
+
+<pre class="language-php">
+<code>     
+$this->call([
+studentseeder::class
+]);
 </code>
 </pre>
 </li>
@@ -1418,6 +1600,7 @@ $student=student::create([
 </code>
 </pre>
 </li>
+
 <li>
 through this method you can update data
 <pre class="language-php">
@@ -1433,7 +1616,7 @@ $student->save();
 </pre>
 </li>
 <li>
-through this method you can updateOrCreate function data
+through this method you can updateOrCreate function data (Model)
 <pre class="language-php">
 <code>     
 student::updateOrCreate(["name"=>"dell"],[
@@ -1445,7 +1628,7 @@ student::updateOrCreate(["name"=>"dell"],[
 </pre>
 </li>
 <li>
-delet the data from database like that with model file
+delet the data from database like that with model file (model)
 <pre class="language-php">
 <code>     
 student::find(4)->delete();
@@ -1455,6 +1638,289 @@ student::truncate();
 </code>
 </pre>
 </li>
+<li>
+session code write in controller
+<pre class="language-php">
+<code>     
+return redirect (route('index'))->with('status',"data addedd!!");
+</code>
+</pre>
+</li>
+<li>
+session code write in main file
+<pre class="language-php">
+<code>     
+@if (session()->has("status"))
+<div class="text-success">
+{{session('status')}}
+</div>
+
+@endif
+</code>
+</pre>
+</li>
+<li>
+you may create an object instance in contoller file according to model
+and through this you can insert data into database(model)
+<pre class="language-php">
+<code>     
+$student= new student;
+$student->name="shahid";
+$student->email="shahid@gmail.com";
+$student->address="new karachi";
+$student->save();
+return view('student',["student"=>$student]);
+
+</code>
+</pre>
+</li>
+<li>
+you can also insert data like that (model)
+<pre class="language-php">
+<code>     
+$student= student::create([
+"name"=>"ahmed",
+"email"=>"ahmed@gmail.com",
+"city"=>"karachi",
+]);
+return view('student',["student"=>$student]);
+
+</code>
+</pre>
+</li>
+<li>
+you can find data and update like that(model)
+<pre class="language-php">
+<code>     
+$student= student::find(2);
+$student->name=$name;
+$student->email=$email;
+$student->address=$address;
+$student->save();
+
+</code>
+</pre>
+</li>
+<li>
+you also apply mass update through this method(model)
+<pre class="language-php">
+<code>     
+MASS UpDATE:-
+$student::where('city',"karachi")->update(["marks"=>100]);
+
+</code>
+</pre>
+</li>
+<li>
+you also apply mass delete through this method(model)
+<pre class="language-php">
+<code>     
+MASS delete:-
+$student::where('city',"karachi")->delete();
+
+</code>
+</pre>
+</li>
+<li>
+through this you can delete (model)
+<pre class="language-php">
+<code>     
+$student=student::find(3);
+$student->delete();
+</code>
+</pre>
+</li>
+<li>
+through this you can delete (model)
+<pre class="language-php">
+<code>     
+$student=student::destroy(7);
+</code>
+</pre>
+</li>
+<li>
+through this you can insert data  (model)
+<pre class="language-php">
+<code>     
+$student=new student;
+$student->Name=$request->Name;
+$student->Email=$request->Email; 
+$student->Password=$request->Password;
+$student->save();
+</code>
+</pre>
+</li>
+
+
+<li>
+<h4>ONE TO ONE RELATIONSHIP CHEETSHEET STARTING FROM HERE </h4>
+    <pre class="language-php">
+    <code>     
+        
+    </code>
+    </pre>
+    </li>
+    </li>
+
+
+
+
+
+
+
+<li>
+in order to make foreign key
+<pre class="language-php">
+<code>     
+    $table->foreign("customer_id")->references('id')->on('customers');
+</code>
+</pre>
+</li>
+</li>
+<li>
+In order to make one to one relationship then(ONE TO ONE RELATIONSHIP)
+<pre class="language-php">
+<code>     
+    public function mobile(){
+        return $this->hasOne(Mobile::.class);
+    }
+</code>
+</pre>
+</li>
+
+<li>
+ONE EXAMPLE TO ISERT AND RETRIVE DATA IN CONTROLLER FILE WHEN MAKING 
+ONE TO ONE RELATIONSHIP
+<pre class="language-php">
+<code>     
+  
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Mobile;
+
+class CustomerController extends Controller
+{
+function Add_customer(){
+   $mobile=new Mobile();
+   $mobile->model="galaxyj7";
+
+
+   $customer=new Customer();
+   $customer->Name="liaquat";
+   $customer->Email="liaquat@gmail.com";
+   $customer->save();
+   $customer->Mobile()->save($mobile);
+
+
+}
+
+function showMobile($id){
+$mobile=Customer::find($id)->Mobile;
+return $mobile;
+}
+
+}
+  
+    
+</code>
+</pre>
+</li>
+
+
+
+
+
+<li>
+    <h4>Authentication and breeze in laravel </h4>
+        <pre class="language-php">
+        <code>     
+            
+        </code>
+        </pre>
+        </li>
+
+
+
+<li>
+    <h4>To install breeze  </h4>
+        <pre class="language-php">
+        <code>     
+            composer require laravel/breeze --dev
+            php artisan breeze:install
+            npm install
+            npm run dev
+        </code>
+        </pre>
+        </li>
+<li>
+    <h4>use this code in controller file </h4>
+        <pre class="language-php">
+        <code>     
+use\Illuminate\Support\Facades\Auth;
+        </code>
+        </pre>
+        </li>
+        
+<li>
+    <h4>to see all data in authentication </h4>
+        <pre class="language-php">
+        <code>     
+            function show(){
+                return Auth::user();
+            }
+            <!-- only name -->
+            function show(){
+                return Auth::user()->name;
+            }
+            <!-- id -->
+            function show(){
+                return Auth::id();
+            }
+        </code>
+        </pre>
+        </li>
+<li>
+    <h4>to see all data in authentication or find who user login in website </h4>
+        <pre class="language-php">
+        <code>     
+            function show(request $request){
+                return $request->user();   
+            }
+            <!-- only name -->
+            function show(request $request){
+                return $request->user()->name;   
+            }
+            <!-- id -->
+            function show(){
+                return $request->id();
+            }
+        </code>
+        </pre>
+        </li>
+        
+<li>
+    <h4>To check that the user is authentication or not </h4>
+        <pre class="language-php">
+        <code>     
+            function check(){
+                if(Auth::check()){
+                    return "you are authenticated user";
+                }
+                    return "unauthenticated user";
+                
+            }
+        </code>
+        </pre>
+        </li>
+        
+
+
+
+
+
+
 
 
 </ol>
