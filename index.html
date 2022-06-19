@@ -1738,6 +1738,36 @@ $student=student::destroy(7);
 </code>
 </pre>
 </li>
+
+<li>
+error message function
+<pre class="language-php">
+<code>     
+<div class="text-danger">
+@error('name')
+{{$message}}
+@enderror
+</div>
+</code>
+</pre>
+</li>   
+
+
+<li>
+validation function in laravel
+<pre class="language-php">
+<code>     
+$req->validate(
+['name' => 'required',
+'Fname' => 'required|min:5',
+'password' => 'required|confirmed',
+'password_confirmation' => 'required'
+]
+);
+</code>
+</pre>
+</li>      
+
 <li>
 through this you can insert data  (model)
 <pre class="language-php">
@@ -1754,13 +1784,13 @@ $student->save();
 
 <li>
 <h4>ONE TO ONE RELATIONSHIP CHEETSHEET STARTING FROM HERE </h4>
-    <pre class="language-php">
-    <code>     
-        
-    </code>
-    </pre>
-    </li>
-    </li>
+<pre class="language-php">
+<code>     
+
+</code>
+</pre>
+</li>
+</li>
 
 
 
@@ -1772,7 +1802,7 @@ $student->save();
 in order to make foreign key
 <pre class="language-php">
 <code>     
-    $table->foreign("customer_id")->references('id')->on('customers');
+$table->foreign("customer_id")->references('id')->on('customers');
 </code>
 </pre>
 </li>
@@ -1781,9 +1811,9 @@ in order to make foreign key
 In order to make one to one relationship then(ONE TO ONE RELATIONSHIP)
 <pre class="language-php">
 <code>     
-    public function mobile(){
-        return $this->hasOne(Mobile::.class);
-    }
+public function mobile(){
+return $this->hasOne(Mobile::.class);
+}
 </code>
 </pre>
 </li>
@@ -1793,7 +1823,7 @@ ONE EXAMPLE TO ISERT AND RETRIVE DATA IN CONTROLLER FILE WHEN MAKING
 ONE TO ONE RELATIONSHIP
 <pre class="language-php">
 <code>     
-  
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -1803,15 +1833,15 @@ use App\Models\Mobile;
 class CustomerController extends Controller
 {
 function Add_customer(){
-   $mobile=new Mobile();
-   $mobile->model="galaxyj7";
+$mobile=new Mobile();
+$mobile->model="galaxyj7";
 
 
-   $customer=new Customer();
-   $customer->Name="liaquat";
-   $customer->Email="liaquat@gmail.com";
-   $customer->save();
-   $customer->Mobile()->save($mobile);
+$customer=new Customer();
+$customer->Name="liaquat";
+$customer->Email="liaquat@gmail.com";
+$customer->save();
+$customer->Mobile()->save($mobile);
 
 
 }
@@ -1822,8 +1852,8 @@ return $mobile;
 }
 
 }
-  
-    
+
+
 </code>
 </pre>
 </li>
@@ -1833,88 +1863,88 @@ return $mobile;
 
 
 <li>
-    <h4>Authentication and breeze in laravel </h4>
-        <pre class="language-php">
-        <code>     
-            
-        </code>
-        </pre>
-        </li>
+<h4>Authentication and breeze in laravel </h4>
+<pre class="language-php">
+<code>     
+
+</code>
+</pre>
+</li>
 
 
 
 <li>
-    <h4>To install breeze  </h4>
-        <pre class="language-php">
-        <code>     
-            composer require laravel/breeze --dev
-            php artisan breeze:install
-            npm install
-            npm run dev
-        </code>
-        </pre>
-        </li>
+<h4>To install breeze  </h4>
+<pre class="language-php">
+<code>     
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+</code>
+</pre>
+</li>
 <li>
-    <h4>use this code in controller file </h4>
-        <pre class="language-php">
-        <code>     
+<h4>use this code in controller file </h4>
+<pre class="language-php">
+<code>     
 use\Illuminate\Support\Facades\Auth;
-        </code>
-        </pre>
-        </li>
-        
+</code>
+</pre>
+</li>
+
 <li>
-    <h4>to see all data in authentication </h4>
-        <pre class="language-php">
-        <code>     
-            function show(){
-                return Auth::user();
-            }
-            <!-- only name -->
-            function show(){
-                return Auth::user()->name;
-            }
-            <!-- id -->
-            function show(){
-                return Auth::id();
-            }
-        </code>
-        </pre>
-        </li>
+<h4>to see all data in authentication </h4>
+<pre class="language-php">
+<code>     
+function show(){
+return Auth::user();
+}
+<!-- only name -->
+function show(){
+return Auth::user()->name;
+}
+<!-- id -->
+function show(){
+return Auth::id();
+}
+</code>
+</pre>
+</li>
 <li>
-    <h4>to see all data in authentication or find who user login in website </h4>
-        <pre class="language-php">
-        <code>     
-            function show(request $request){
-                return $request->user();   
-            }
-            <!-- only name -->
-            function show(request $request){
-                return $request->user()->name;   
-            }
-            <!-- id -->
-            function show(){
-                return $request->id();
-            }
-        </code>
-        </pre>
-        </li>
-        
+<h4>to see all data in authentication or find who user login in website </h4>
+<pre class="language-php">
+<code>     
+function show(request $request){
+return $request->user();   
+}
+<!-- only name -->
+function show(request $request){
+return $request->user()->name;   
+}
+<!-- id -->
+function show(){
+return $request->id();
+}
+</code>
+</pre>
+</li>
+
 <li>
-    <h4>To check that the user is authentication or not </h4>
-        <pre class="language-php">
-        <code>     
-            function check(){
-                if(Auth::check()){
-                    return "you are authenticated user";
-                }
-                    return "unauthenticated user";
-                
-            }
-        </code>
-        </pre>
-        </li>
-        
+<h4>To check that the user is authentication or not </h4>
+<pre class="language-php">
+<code>     
+function check(){
+if(Auth::check()){
+return "you are authenticated user";
+}
+return "unauthenticated user";
+
+}
+</code>
+</pre>
+</li>
+
 
 
 
