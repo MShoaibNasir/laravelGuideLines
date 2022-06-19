@@ -46,6 +46,26 @@ return view('about');
 </code>
 </pre>
 </li>
+  
+  
+  
+  
+  <li>when you want to submit your form through model
+<pre class="language-php"><code>
+function store(Request $req){
+    $customer=new FormSubmit;
+    $customer->name=$req['name'];
+    $customer->email=$req['email'];
+    $customer->password=$req['password']; 
+    $customer->country=$req['country']; 
+    $customer->address=$req['address']; 
+    
+    $customer->save();
+    return ("<h2>your form submited</h2>");
+}
+</code>
+</pre>
+</li>
 
 
 <li>enum function in migration
