@@ -1975,6 +1975,29 @@ return "unauthenticated user";
 </pre>
 </li>
 
+  
+  
+  
+<li>
+<h4>These are the ways through you send data from controller to view file</h4>
+<pre class="language-php">
+<code>     
+class DefineControoler extends Controller
+{
+    function show(){
+        $myArray=array("ali","usman","afridi");
+        $word="this is shoaib";
+        return view('frontend.home',["team"=>$myArray,"word"=>$word]);
+        $data=compact("myArray","word");
+        return view('frontend.home',$data);
+        return view('frontend.home')->with($data);
+        return view('frontend.home',["myArray"=>$myArray,"word"=>$word]);
+    }
+}
+</code>
+</pre>
+</li>
+
 
 
 
