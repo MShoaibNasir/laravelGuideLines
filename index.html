@@ -82,6 +82,56 @@ compact('this is string');
 </code>
 </pre>
 </li>
+  
+  
+<li>
+this is the tinker command  
+<pre class="language-php"><code>
+php artisan tinker
+</code>
+</pre>
+</li>
+  
+  <li>
+this is the tinker command  through you get all data
+<pre class="language-php"><code>
+DB::table('tablename')->get();
+</code>
+</pre>
+</li>
+  
+  <li>
+this is the tinker command   through you insert data
+<pre class="language-php"><code>
+DB::("tablename")->insert(["name"=>"shoaib","email"=>"shoaib@gmail.com"],["name"=>"talha","email"=>"talha@gmail.com"]);
+</code>
+</pre>
+</li>
+  
+  
+   <li>
+this is the tinker command   through you retrive data
+<pre class="language-php"><code>
+with array
+DB::table("tablename")->where("name","shoaib")->get();
+without array
+DB::table("tablename")->where("name","shoaib")->first();
+</code>
+</pre>
+</li>
+  
+  
+  <li>
+this is the tinker command   through this commnad you can retrive all the data in one column
+<pre class="language-php"><code>
+with array
+DB::table("tablename")->pluck("name");
+</code>
+</pre>
+</li>
+  
+  
+  
 <li>you can take the data from web.php into main file like home.blade.php
 <pre class="language-php"><code>
 Route::get('home/{name?}/{id}',function($id,$name=null){
