@@ -48,6 +48,46 @@ return view('about');
 </li>
   
   
+<li>Defining middleware code
+<pre class="language-php"><code>
+use Symfony\Component\HttpKernel\Exception\HttpException;
+public function handle(Request $request, Closure $next)
+    {
+        throw new HttpException(503);
+    }
+</code>
+</pre>
+</li>
+  
+  
+  <li>Defining middleware code
+<pre class="language-php"><code>composer require livewire/livewire
+</code>
+</pre>
+</li>
+  
+<li>Defining middleware code
+<pre class="language-php"><code>
+composer require livewire/livewire
+php artisan make:livewire HomeComponent
+
+routing of livewire
+Route::get('/',HomeComponent::class);
+</code>
+</pre>
+</li>
+  
+  
+  
+  <li>to see the default errors middleware
+<pre class="language-php">
+<code>
+php artisan vendor:publish --tag=laravel-errors
+</code>
+</pre>
+</li>
+  
+  
   
   
   <li>when you want to submit your form through model
