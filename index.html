@@ -88,6 +88,20 @@ php artisan vendor:publish --tag=laravel-errors
 </code>
 </pre>
 </li>
+   <li>to add categories in the web aoolication
+<pre class="language-php">
+<code>
+
+            @php
+                $category=\Illuminate\Support\Facades\DB::table('categories')->get();
+                @endphp
+                @foreach ($category as $item)
+
+                <option value="{{ $item->title }}">{{ $item->title }}</option>
+                @endforeach
+</code>
+</pre>
+</li>
   
   
   
