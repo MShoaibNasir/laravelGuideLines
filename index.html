@@ -48,6 +48,19 @@ return view('about');
 </li>
   
   
+  
+  
+<li>Defining a route code example
+<pre class="language-php"><code>
+Route::get("about/{name}/page",function(){
+return view('about');
+}->name("name");
+<a href="{{ route('shayan',["name"="shoaib"]) }}"></a>
+</code>
+</pre>
+</li>
+  
+  
 <li>Defining middleware code
 <pre class="language-php"><code>
 use Symfony\Component\HttpKernel\Exception\HttpException;
