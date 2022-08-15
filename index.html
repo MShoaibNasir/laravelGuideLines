@@ -2130,6 +2130,242 @@ class DefineControoler extends Controller
 
 
 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Artical;
+
+class ArticalController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function articalList(){
+        $data=Artical::all();
+        return view('backend.articalList',[
+            "data"=>$data
+]);
+    }
+    public function index()
+    {
+        return view('backend.artical');
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+                $data=$request->all();
+                // dd($data);
+                // dd($request->hasfile('articalImage'));
+                if($request->hasFile('articalImage')){
+                    $image=$request->articalImage;
+
+
+                    $filename=$image->getClientOriginalExtension().time();
+                    $request->file('articalImage')->move('/assets/iamges/Artical',$filename);
+                }
+                   $staus=artical::create($data);
+                   if($staus){
+                    $request->session()->put('success', 'you update data successfylly');
+                    return redirect()->back();
+                }
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $artical=Artical::find($id);
+        return view('backend.articalEdit',[
+        "data"=>$artical
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+    //    $Artical=Artical::find($id);
+       $data = request()->except(['_token']);
+       Artical::whereId($id)->update($data);
+       return redirect()->back()->with('success', 'Game Data is successfully updated');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+       $artist=Artical::find($id);
+       $result=$artist->delete();
+       return redirect()->back();
+
+       if($result){
+        Session()->put('success','you update  data successfully');
+
+       }else{
+        Session()->put('error','Data is not update');
+       }
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Home;
+use App\Models\Artical;
+
+class FrontendController extends Controller
+{
+    public function blog()
+    {
+
+        return view('Frontend.blog');
+    }
+
+
+    public function index()
+    {
+        $data=Home::find(1);
+        $artical=Artical::all();
+
+        return view('Frontend.index',[
+            "data"=>$data,
+            "artical"=>$artical
+        ]);
+    }
+
+    public function news()
+    {
+        return view('Frontend.news');
+    }
+
+
+    public function portfolio()
+    {
+        return view('Frontend.portfolio');
+    }
+    public function contact(){
+        return view('Frontend.contact');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Login;
+use Illuminate\Support\Facades\Hash;
+
+class BackendController extends Controller
+{
+    public function dashboard(){
+        return view('backend.dashboard');
+    }
+    public function login(){
+        return view('backend.login');
+    }
+    public function checklogin(Request $request){
+
+        // dd(hash::make('user'));
+    $user=Login::where(['email'=>$request->email])->first();
+    // dd($user);
+    if ($user and Hash::check($request->password,$user->password)){
+        Session()->put('user_id',$user->id);
+        Session()->put('user_email',$user->email);
+        Session()->put('user_password',$user->password);
+        Session()->put('type_id',$user->type);
+        return redirect(route('dashboard'));
+    }else{
+        echo "not hello";
+    }
+
+    }
+
+
+}
+
+
+
+
 
 
 
