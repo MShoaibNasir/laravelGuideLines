@@ -2378,6 +2378,64 @@ php artisan migrate
 
 </ol>
 </div>
+
+
+
+
+
+\Mail::send('email.quote', ['data' => $inquiry,'product'=>$product],function ($message) use ($inquiry,$request){
+$message
+->from('info@headsetzoom.com')
+->to(['admin@headsetzoom.com','jake@headsetzoom.com'])->subject('Quote Inquiry - Mallory Headsets');
+
+
+
+
+ public static function getSegment($slug){
+    $data = MiddleSegment::where('slug',$slug)->get();
+    return $data;
+
+@php
+ $url = last(request()->segments());
+@endphp
+
+
+@foreach(App\Models\MiddleSegment::getSegment($url) as $item)
+<div class="col-lg-3">
+<div class="img-box">
+<div class="image">
+<img src="{{asset('upload/middle/'.$item->image)}}" alt="image">
+</div>
+<div class="img-content">
+<h5>
+{!! $item->title !!}
+</h5>
+<p>
+
+{!! $item->content !!}
+</p>
+<a href="#">
+View Details
+</a>
+</div>
+</div>
+</div>
+@endforeach
+
+public function create(Request $request)
+{
+$data=$request->all();
+$array = array_values($data);
+$arraynama = '';
+for($i=3; $i<count($array); $i++){
+      $arraynama .= $array[$i] . ':';
+}
+$fo= rtrim($arraynama, ":");
+
+$data['Featureone']=$fo
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"
 integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
